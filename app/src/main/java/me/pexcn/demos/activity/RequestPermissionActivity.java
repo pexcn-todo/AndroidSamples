@@ -31,6 +31,7 @@ public class RequestPermissionActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        super.init();
         mButton = (Button) findViewById(R.id.request);
         mButton.setOnClickListener(v -> {
             // 检查是否已授权
