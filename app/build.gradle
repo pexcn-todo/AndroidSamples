@@ -32,7 +32,7 @@ dependencies {
     compile 'me.pexcn:simpleutils:0.0.8'
     compile 'io.reactivex:rxjava:1.1.10'
     compile 'io.reactivex:rxandroid:1.2.1'
-    // compile 'com.squareup.leakcanary:leakcanary-android:1.4'
+
     // compile 'com.android.support:design:24.2.1'
     // compile 'com.android.support:recyclerview-v7:24.2.1'
 }

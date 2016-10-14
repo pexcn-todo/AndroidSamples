@@ -38,12 +38,12 @@ public class RequestPermissionActivity extends BaseActivity {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
                     // 可以请求权限
-                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "Your need the permissions", Snackbar.LENGTH_LONG);
+                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "可以请求权限", Snackbar.LENGTH_LONG);
                     mSnackbar.show();
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, READ_CONTACTS_REQUEST_CODE);
                 } else {
                     // 已经“不再询问”地拒绝了该权限
-                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "No!!!", Snackbar.LENGTH_LONG);
+                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "已经不再询问地拒绝了", Snackbar.LENGTH_LONG);
                     mSnackbar.show();
                 }
             }
@@ -59,10 +59,10 @@ public class RequestPermissionActivity extends BaseActivity {
         switch (requestCode) {
             case READ_CONTACTS_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "Get permissions success", Snackbar.LENGTH_LONG);
+                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "请求权限成功", Snackbar.LENGTH_LONG);
                     mSnackbar.show();
                 } else {
-                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "Get permissions failure", Snackbar.LENGTH_LONG);
+                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "请求权限失败", Snackbar.LENGTH_LONG);
                     mSnackbar.show();
                 }
                 break;

@@ -37,21 +37,21 @@ public class RxJava1Activity extends BaseActivity {
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(Schedulers.newThread())
                 .map(s -> {
-                    Log.d(TAG, sb.append("Current thread --> ").append(Thread.currentThread().getName()).append("\n").toString());
+                    Log.d(TAG, sb.append("当前线程 --> ").append(Thread.currentThread().getName()).append("\n").toString());
                     return s.length();
                 })
                 .observeOn(Schedulers.io())
                 .map(integer -> {
-                    Log.d(TAG, sb.append("Current thread --> ").append(Thread.currentThread().getName()).append("\n").toString());
+                    Log.d(TAG, sb.append("当前线程 --> ").append(Thread.currentThread().getName()).append("\n").toString());
                     return integer;
                 })
                 .map(s -> {
-                    Log.d(TAG, sb.append("Current thread --> ").append(Thread.currentThread().getName()).append("\n").toString());
+                    Log.d(TAG, sb.append("当前线程 --> ").append(Thread.currentThread().getName()).append("\n").toString());
                     return s;
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(s -> {
-                    Log.d(TAG, sb.append("Current thread --> ").append(Thread.currentThread().getName()).append("\n").toString());
+                    Log.d(TAG, sb.append("当前线程 --> ").append(Thread.currentThread().getName()).append("\n").toString());
                     mTextView.setText(sb.toString());
                 });
     }
