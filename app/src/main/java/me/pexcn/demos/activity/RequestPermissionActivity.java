@@ -16,6 +16,7 @@ import me.pexcn.demos.base.BaseActivity;
  */
 public class RequestPermissionActivity extends BaseActivity {
     private static final int READ_CONTACTS_REQUEST_CODE = 1;
+    @SuppressWarnings("FieldCanBeLocal")
     private Button mButton;
     private Snackbar mSnackbar;
 

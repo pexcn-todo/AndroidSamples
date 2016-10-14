@@ -14,6 +14,7 @@ import me.pexcn.demos.base.BaseActivity;
  * Created by pexcn on 2016-10-04.
  */
 public class ChromeCustomTabsActivity extends BaseActivity {
+    @SuppressWarnings("FieldCanBeLocal")
     private Button mButton;
 
     @Override
