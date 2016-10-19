@@ -21,7 +21,9 @@
         <activity android:name=".activity.RxJava1Activity" />
         <activity android:name=".activity.ChromeCustomTabsActivity" />
         <activity android:name=".activity.RequestPermissionActivity" />
-        <activity android:name=".activity.TransparentNavBarActivity" />
+        <activity
+            android:name=".activity.TransparentNavBarActivity"
+            android:theme="@style/TransparentNavigationBarAppTheme" />
     </application>
 
 </manifest>
