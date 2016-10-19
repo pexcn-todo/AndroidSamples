@@ -5,6 +5,7 @@
         <item>subscribeOn 和 observeOn 的作用域</item>
         <item>Chrome Custom Tabs</item>
         <item>Android 6.0 请求权限</item>
+        <item>半透明的 NavigationBar</item>
     </string-array>
 
 </resources>

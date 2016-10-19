@@ -22,6 +22,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     protected void init() {
+        super.init();
         mItems = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.activity_titles)));
         ListView listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mItems));
@@ -41,6 +42,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case 2:
                 intent.setClass(this, RequestPermissionActivity.class);
+                break;
+            case 3:
+                intent.setClass(this, TransparentNavBarActivity.class);
                 break;
         }
         startActivity(intent);

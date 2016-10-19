@@ -1,5 +1,7 @@
 package me.pexcn.demos.base;
 
+import android.support.v7.app.ActionBar;
+
 import me.pexcn.simpleutils.base.AbsBaseActivity;
 
 /**
@@ -8,8 +10,10 @@ import me.pexcn.simpleutils.base.AbsBaseActivity;
 public abstract class BaseActivity extends AbsBaseActivity {
     @Override
     protected void init() {
-        if (getSupportActionBar() != null && getIntent() != null) {
-            getSupportActionBar().setTitle(getIntent().getStringExtra("activity_title"));
+        String title;
+        ActionBar actionBar;
+        if ((actionBar = getSupportActionBar()) != null && (title = getIntent().getStringExtra("activity_title")) != null && isSubActivity()) {
+            actionBar.setTitle(title);
         }
     }
 }
