@@ -36,7 +36,7 @@ public class ChromeCustomTabsActivity extends BaseActivity {
             CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder()
                     .setToolbarColor(getResources().getColor(R.color.colorPrimary))
                     .setShowTitle(true)
-                    .addMenuItem("Menus", PendingIntent.getActivity(this, 1, new Intent(), 0))
+                    .addMenuItem("测试菜单", PendingIntent.getActivity(this, 1, new Intent(), 0))
                     .setActionButton(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_crop), "测试", PendingIntent.getActivity(this, 2, new Intent(), 0))
                     .addDefaultShareMenuItem()
                     .build();
