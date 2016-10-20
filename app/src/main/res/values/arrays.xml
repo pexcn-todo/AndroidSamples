@@ -6,6 +6,7 @@
         <item>Chrome Custom Tabs</item>
         <item>Android 6.0 请求权限</item>
         <item>半透明的 NavigationBar</item>
+        <item>ListView 嵌套 ScrollView</item>
     </string-array>
 
 </resources>

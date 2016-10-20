@@ -46,6 +46,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case 3:
                 intent.setClass(this, TransparentNavBarActivity.class);
                 break;
+            case 4:
+                intent.setClass(this, ListNestedScrollActivity.class);
+                break;
         }
         startActivity(intent);
     }
