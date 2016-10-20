@@ -38,7 +38,6 @@ public class ListNestedScrollActivity extends BaseActivity {
         mListView = (ListView) findViewById(R.id.listview);
         mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mItems));
 
-        // mListView.setNestedScrollingEnabled(true);
         mListView.setOnTouchListener((v, event) -> {
             int action = event.getAction();
             switch (action) {
