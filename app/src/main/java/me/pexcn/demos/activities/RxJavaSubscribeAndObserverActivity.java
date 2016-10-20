@@ -1,4 +1,4 @@
-package me.pexcn.demos.activity;
+package me.pexcn.demos.activities;
 
 import android.util.Log;
 import android.widget.TextView;
@@ -12,14 +12,14 @@ import rx.schedulers.Schedulers;
 /**
  * Created by pexcn on 2016-10-04.
  */
-public class RxJava1Activity extends BaseActivity {
-    private static final String TAG = RxJava1Activity.class.getSimpleName();
+public class RxJavaSubscribeAndObserverActivity extends BaseActivity {
+    private static final String TAG = RxJavaSubscribeAndObserverActivity.class.getSimpleName();
 
     private TextView mTextView;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_rxjava1;
+        return R.layout.activity_rxjava_subscribe_and_observer;
     }
 
     @Override

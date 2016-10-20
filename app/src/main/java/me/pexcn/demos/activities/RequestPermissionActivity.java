@@ -1,4 +1,4 @@
-package me.pexcn.demos.activity;
+package me.pexcn.demos.activities;
 
 import android.Manifest;
 import android.content.pm.PackageManager;

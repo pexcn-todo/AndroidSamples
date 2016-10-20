@@ -1,4 +1,4 @@
-package me.pexcn.demos.activity;
+package me.pexcn.demos;
 
 import android.content.Intent;
 import android.view.View;
@@ -9,7 +9,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import me.pexcn.demos.R;
+import me.pexcn.demos.activities.ChromeCustomTabsActivity;
+import me.pexcn.demos.activities.ListNestedScrollActivity;
+import me.pexcn.demos.activities.NestedScrollViewActivity;
+import me.pexcn.demos.activities.RequestPermissionActivity;
+import me.pexcn.demos.activities.RxJavaSubscribeAndObserverActivity;
+import me.pexcn.demos.activities.TransparentNavBarActivity;
 import me.pexcn.demos.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
@@ -35,7 +40,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         intent.putExtra("activity_title", mItems.get(position));
         switch (position) {
             case 0:
-                intent.setClass(this, RxJava1Activity.class);
+                intent.setClass(this, RxJavaSubscribeAndObserverActivity.class);
                 break;
             case 1:
                 intent.setClass(this, ChromeCustomTabsActivity.class);

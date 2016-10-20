@@ -6,27 +6,26 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".App"
+        android:name=".DemosApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.RxJava1Activity" />
-        <activity android:name=".activity.ChromeCustomTabsActivity" />
-        <activity android:name=".activity.RequestPermissionActivity" />
+        <activity android:name=".activities.RxJavaSubscribeAndObserverActivity" />
+        <activity android:name=".activities.ChromeCustomTabsActivity" />
+        <activity android:name=".activities.RequestPermissionActivity" />
         <activity
-            android:name=".activity.TransparentNavBarActivity"
+            android:name=".activities.TransparentNavBarActivity"
             android:theme="@style/TransparentNavigationBarAppTheme" />
-        <activity android:name=".activity.ListNestedScrollActivity" />
-        <activity android:name=".activity.NestedScrollViewActivity"></activity>
+        <activity android:name=".activities.ListNestedScrollActivity" />
+        <activity android:name=".activities.NestedScrollViewActivity" />
     </application>
 
 </manifest>

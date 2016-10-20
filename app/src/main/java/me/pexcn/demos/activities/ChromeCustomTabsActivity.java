@@ -1,4 +1,4 @@
-package me.pexcn.demos.activity;
+package me.pexcn.demos.activities;
 
 import android.app.PendingIntent;
 import android.content.Intent;

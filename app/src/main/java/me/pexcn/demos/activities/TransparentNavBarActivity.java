@@ -1,4 +1,4 @@
-package me.pexcn.demos.activity;
+package me.pexcn.demos.activities;
 
 import android.os.Build;
 import android.support.design.widget.AppBarLayout;
@@ -22,7 +22,7 @@ public class TransparentNavBarActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_transparent_navbar;
+        return R.layout.activity_transparent_nav_bar;
     }
 
     @Override
