@@ -49,6 +49,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case 4:
                 intent.setClass(this, ListNestedScrollActivity.class);
                 break;
+            case 5:
+                intent.setClass(this, NestedScrollViewActivity.class);
+                break;
         }
         startActivity(intent);
     }
