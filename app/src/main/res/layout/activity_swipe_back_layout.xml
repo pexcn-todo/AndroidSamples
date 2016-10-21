@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_swipe_back_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="监听边缘"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+
+    <RadioGroup
+        android:id="@+id/tracking_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:checkedButton="@+id/mode_left">
+
+        <RadioButton
+            android:id="@+id/mode_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="左边"
+            tools:ignore="HardcodedText" />
+
+        <RadioButton
+            android:id="@+id/mode_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="右边"
+            tools:ignore="HardcodedText" />
+
+        <RadioButton
+            android:id="@+id/mode_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下边"
+            tools:ignore="HardcodedText" />
+
+        <RadioButton
+            android:id="@+id/mode_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部"
+            tools:ignore="HardcodedText" />
+    </RadioGroup>
+
+</LinearLayout>

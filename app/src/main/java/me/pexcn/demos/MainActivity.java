@@ -14,6 +14,7 @@ import me.pexcn.demos.activities.ListNestedScrollActivity;
 import me.pexcn.demos.activities.NestedScrollViewActivity;
 import me.pexcn.demos.activities.RequestPermissionActivity;
 import me.pexcn.demos.activities.RxJavaSubscribeAndObserverActivity;
+import me.pexcn.demos.activities.SwipeBackLayoutActivity;
 import me.pexcn.demos.activities.TransparentNavBarActivity;
 import me.pexcn.demos.base.BaseActivity;
 
@@ -56,6 +57,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case 5:
                 intent.setClass(this, NestedScrollViewActivity.class);
+                break;
+            case 6:
+                intent.setClass(this, SwipeBackLayoutActivity.class);
                 break;
         }
         startActivity(intent);

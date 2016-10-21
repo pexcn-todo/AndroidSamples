@@ -15,6 +15,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,6 +27,9 @@
             android:theme="@style/TransparentNavigationBarAppTheme" />
         <activity android:name=".activities.ListNestedScrollActivity" />
         <activity android:name=".activities.NestedScrollViewActivity" />
+        <activity
+            android:name=".activities.SwipeBackLayoutActivity"
+            android:theme="@style/SwipeBackLayoutAppTheme" />
     </application>
 
 </manifest>
