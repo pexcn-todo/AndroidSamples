@@ -14,7 +14,9 @@ import me.pexcn.swipebacklayout.SwipeBackLayout;
 import me.pexcn.swipebacklayout.app.SwipeBackActivity;
 
 public class SwipeBackLayoutActivity extends SwipeBackActivity {
+    @SuppressWarnings("FieldCanBeLocal")
     private Toolbar mToolbar;
+    @SuppressWarnings("FieldCanBeLocal")
     private RadioGroup mModeGroup;
     private SwipeBackLayout mSwipeBackLayout;
 
