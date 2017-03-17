@@ -14,6 +14,7 @@ import me.pexcn.demos.activities.ListNestedScrollActivity;
 import me.pexcn.demos.activities.NestedScrollViewActivity;
 import me.pexcn.demos.activities.RequestPermissionActivity;
 import me.pexcn.demos.activities.RxJavaSubscribeAndObserverActivity;
+import me.pexcn.demos.activities.RxPermissionsActivity;
 import me.pexcn.demos.activities.SwipeBackLayoutActivity;
 import me.pexcn.demos.activities.TransparentNavBarActivity;
 import me.pexcn.demos.base.BaseActivity;
@@ -37,7 +38,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent();
+        final Intent intent = new Intent();
         intent.putExtra("activity_title", mItems.get(position));
         switch (position) {
             case 0:
@@ -60,6 +61,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case 6:
                 intent.setClass(this, SwipeBackLayoutActivity.class);
+                break;
+            case 7:
+                intent.setClass(this, RxPermissionsActivity.class);
                 break;
         }
         startActivity(intent);

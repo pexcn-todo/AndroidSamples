@@ -1,6 +1,6 @@
 package me.pexcn.demos.activities;
 
-import android.util.Log;
+import android.annotation.SuppressLint;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,8 +14,6 @@ import rx.schedulers.Schedulers;
  * Created by pexcn on 2016-10-04.
  */
 public class RxJavaSubscribeAndObserverActivity extends BaseActivity {
-    private static final String TAG = RxJavaSubscribeAndObserverActivity.class.getSimpleName();
-
     private TextView mTextView;
     @SuppressWarnings("FieldCanBeLocal")
     private Button mButton;
@@ -30,6 +28,7 @@ public class RxJavaSubscribeAndObserverActivity extends BaseActivity {
         return true;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void init() {
         super.init();
@@ -39,27 +38,23 @@ public class RxJavaSubscribeAndObserverActivity extends BaseActivity {
 
         mButton.setOnClickListener(v -> {
             v.setClickable(false);
-            StringBuilder sb = new StringBuilder();
-            Observable.just("RxJava")
-                    .subscribeOn(AndroidSchedulers.mainThread())
+
+            Observable.from(getResources().getStringArray(R.array.activity_titles))
+                    .subscribeOn(Schedulers.io())
                     .observeOn(Schedulers.newThread())
                     .map(s -> {
-                        Log.d(TAG, sb.append("当前线程 --> ").append(Thread.currentThread().getName()).append("\n").toString());
-                        return s.length();
+                        s = Thread.currentThread().getName() + " -->\n";
+                        return s;
                     })
                     .observeOn(Schedulers.io())
-                    .map(integer -> {
-                        Log.d(TAG, sb.append("当前线程 --> ").append(Thread.currentThread().getName()).append("\n").toString());
-                        return integer;
-                    })
                     .map(s -> {
-                        Log.d(TAG, sb.append("当前线程 --> ").append(Thread.currentThread().getName()).append("\n").toString());
+                        s = s + Thread.currentThread().getName() + " -->\n";
                         return s;
                     })
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(s -> {
-                        Log.d(TAG, sb.append("当前线程 --> ").append(Thread.currentThread().getName()).append("\n").toString());
-                        mTextView.setText(sb.toString());
+                        s = s + Thread.currentThread().getName();
+                        mTextView.setText(s);
                     });
         });
     }

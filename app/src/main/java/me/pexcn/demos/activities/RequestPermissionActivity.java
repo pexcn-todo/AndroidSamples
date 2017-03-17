@@ -15,7 +15,7 @@ import me.pexcn.demos.base.BaseActivity;
  * Created by pexcn on 2016-10-05.
  */
 public class RequestPermissionActivity extends BaseActivity {
-    private static final int READ_CONTACTS_REQUEST_CODE = 1;
+    private static final int READ_CONTACTS_REQUEST_CODE = 0x01;
     @SuppressWarnings("FieldCanBeLocal")
     private Button mButton;
     private Snackbar mSnackbar;

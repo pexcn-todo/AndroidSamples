@@ -43,7 +43,7 @@ public class TransparentNavBarActivity extends BaseActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // Toolbar fixes
-            AppBarLayout layout = (AppBarLayout) (mToolbar.getParent());
+            AppBarLayout layout = (AppBarLayout) (findViewById(R.id.toolbar).getParent());
             layout.setPadding(0, getStatusBarHeight(), 0, 0);
 
 //            Window window = getWindow();

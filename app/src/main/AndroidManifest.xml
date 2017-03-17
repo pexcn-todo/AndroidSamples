@@ -30,6 +30,7 @@
         <activity
             android:name=".activities.SwipeBackLayoutActivity"
             android:theme="@style/SwipeBackLayoutAppTheme" />
+        <activity android:name=".activities.RxPermissionsActivity" />
     </application>
 
 </manifest>
