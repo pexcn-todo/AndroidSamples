@@ -1,5 +1,6 @@
-package me.pexcn.demos.activities;
+package me.pexcn.demos.fixes;
 
+import android.view.MotionEvent;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import me.pexcn.demos.R;
 import me.pexcn.demos.base.BaseActivity;
 
-public class NestedScrollViewActivity extends BaseActivity {
+public class ListNestedScrollActivity extends BaseActivity {
     @SuppressWarnings("FieldCanBeLocal")
     private ListView mListView;
     @SuppressWarnings("FieldCanBeLocal")
@@ -17,7 +18,7 @@ public class NestedScrollViewActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_nested_scroll_view;
+        return R.layout.activity_fixes_list_nested_scroll;
     }
 
     @Override
@@ -36,6 +37,19 @@ public class NestedScrollViewActivity extends BaseActivity {
 
         mListView = (ListView) findViewById(R.id.listview);
         mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mItems));
-        mListView.setNestedScrollingEnabled(true);
+
+        mListView.setOnTouchListener((v, event) -> {
+            int action = event.getAction();
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    v.getParent().requestDisallowInterceptTouchEvent(false);
+                    break;
+            }
+            v.onTouchEvent(event);
+            return true;
+        });
     }
 }

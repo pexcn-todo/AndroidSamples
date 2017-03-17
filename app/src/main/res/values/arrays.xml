@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="activity_titles">
-        <item>subscribeOn 和 observeOn 的作用域</item>
+    <string-array name="activity_titles_top">
+        <item>特性</item>
+        <item>修复</item>
+        <item>RxJava</item>
+    </string-array>
+
+    <string-array name="activity_titles_sub_feature">
         <item>Chrome Custom Tabs</item>
         <item>Android 6.0 请求权限</item>
-        <item>半透明的 NavigationBar</item>
-        <item>ListView 嵌套 ScrollView</item>
-        <item>ListView 嵌套 NestedScrollView</item>
-        <item>滑动返回</item>
+        <item>Activity 滑动返回</item>
+        <item>透明的 Navigation Bar</item>
+    </string-array>
+
+    <string-array name="activity_titles_sub_fixes">
+        <item>ScrollView 嵌套 ListView</item>
+        <item>NestedScrollView 嵌套 ListView</item>
+    </string-array>
+
+    <string-array name="activity_titles_sub_rxjava">
+        <item>Subscribe 和 Observer 作用域</item>
         <item>RxPermissions 请求权限</item>
     </string-array>
 

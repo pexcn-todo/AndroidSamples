@@ -1,4 +1,4 @@
-package me.pexcn.demos.activities;
+package me.pexcn.demos.rxjava;
 
 import android.Manifest;
 import android.widget.Toast;
@@ -14,7 +14,7 @@ import me.pexcn.demos.base.BaseActivity;
 public class RxPermissionsActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_rxpermissions;
+        return R.layout.activity_rxjava_rxpermissions;
     }
 
     @Override

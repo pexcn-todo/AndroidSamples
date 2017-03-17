@@ -1,4 +1,4 @@
-package me.pexcn.demos.activities;
+package me.pexcn.demos.rxjava;
 
 import android.annotation.SuppressLint;
 import android.widget.Button;
@@ -39,7 +39,7 @@ public class RxJavaSubscribeAndObserverActivity extends BaseActivity {
         mButton.setOnClickListener(v -> {
             v.setClickable(false);
 
-            Observable.from(getResources().getStringArray(R.array.activity_titles))
+            Observable.from(getResources().getStringArray(R.array.activity_titles_sub_rxjava))
                     .subscribeOn(Schedulers.io())
                     .observeOn(Schedulers.newThread())
                     .map(s -> {

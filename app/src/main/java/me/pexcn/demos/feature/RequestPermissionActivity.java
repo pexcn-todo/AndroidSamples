@@ -1,4 +1,4 @@
-package me.pexcn.demos.activities;
+package me.pexcn.demos.feature;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -22,7 +22,7 @@ public class RequestPermissionActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_request_permission;
+        return R.layout.activity_feature_request_permission;
     }
 
     @Override

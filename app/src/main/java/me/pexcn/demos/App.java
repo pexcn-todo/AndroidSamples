@@ -7,7 +7,7 @@ import me.pexcn.simpleutils.Utils;
 /**
  * Created by pexcn on 2016-09-25.
  */
-public class DemosApp extends Application {
+public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();

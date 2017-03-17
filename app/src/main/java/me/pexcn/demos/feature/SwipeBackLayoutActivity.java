@@ -1,4 +1,4 @@
-package me.pexcn.demos.activities;
+package me.pexcn.demos.feature;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -23,7 +23,7 @@ public class SwipeBackLayoutActivity extends SwipeBackActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_swipe_back_layout);
+        setContentView(R.layout.activity_feature_swipe_back_layout);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
