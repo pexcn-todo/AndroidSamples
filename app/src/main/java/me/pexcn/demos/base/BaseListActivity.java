@@ -19,7 +19,7 @@ public abstract class BaseListActivity extends BaseActivity implements AdapterVi
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_list;
+        return R.layout.activity_collections;
     }
 
     @Override

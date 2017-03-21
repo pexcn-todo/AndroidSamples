@@ -5,6 +5,8 @@
         <item>特性</item>
         <item>修复</item>
         <item>RxJava</item>
+        <item>自定义 View</item>
+        <item>RecyclerView</item>
     </string-array>
 
     <string-array name="activity_titles_sub_feature">
@@ -22,6 +24,14 @@
     <string-array name="activity_titles_sub_rxjava">
         <item>Subscribe 和 Observer 作用域</item>
         <item>RxPermissions 请求权限</item>
+    </string-array>
+
+    <string-array name="activity_titles_sub_customview">
+        <item>坐标系</item>
+    </string-array>
+
+    <string-array name="activity_titles_sub_recyclerview">
+        <item>RecyclerView 下拉刷新 1</item>
     </string-array>
 
 </resources>

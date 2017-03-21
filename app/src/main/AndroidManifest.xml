@@ -20,10 +20,14 @@
             </intent-filter>
         </activity>
 
+        <!-- Main -->
         <activity android:name=".feature.FeatureActivity" />
         <activity android:name=".fixes.FixesActivity" />
         <activity android:name=".rxjava.RxJavaActivity" />
+        <activity android:name=".customview.CustomViewActivity" />
+        <activity android:name=".recyclerview.RecyclerViewActivity" />
 
+        <!-- Feature -->
         <activity android:name=".feature.ChromeCustomTabsActivity" />
         <activity android:name=".feature.RequestPermissionActivity" />
         <activity
@@ -33,11 +37,19 @@
             android:name=".feature.TransparentNavBarActivity"
             android:theme="@style/TransparentNavigationBarAppTheme" />
 
+        <!-- Fixes -->
         <activity android:name=".fixes.ListNestedScrollActivity" />
         <activity android:name=".fixes.NestedScrollViewActivity" />
 
+        <!-- RxJava -->
         <activity android:name=".rxjava.RxJavaSubscribeAndObserverActivity" />
         <activity android:name=".rxjava.RxPermissionsActivity" />
+
+        <!-- CustomView -->
+        <activity android:name=".customview.CoordinateSystemActivity" />
+
+        <!-- RecyclerView -->
+        <activity android:name=".recyclerview.PullToRefreshActivity" />
     </application>
 
 </manifest>
