@@ -50,6 +50,7 @@
 
         <!-- RecyclerView -->
         <activity android:name=".recyclerview.PullToRefreshActivity" />
+        <activity android:name=".recyclerview.PullToRefresh2Activity" />
     </application>
 
 </manifest>

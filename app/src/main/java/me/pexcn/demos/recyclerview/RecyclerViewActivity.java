@@ -1,7 +1,6 @@
 package me.pexcn.demos.recyclerview;
 
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +22,9 @@ public class RecyclerViewActivity extends BaseListActivity {
         switch (position) {
             case 0:
                 intent.setClass(this, PullToRefreshActivity.class);
+                break;
+            case 1:
+                intent.setClass(this, PullToRefresh2Activity.class);
                 break;
         }
     }

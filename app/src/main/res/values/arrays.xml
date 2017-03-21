@@ -32,6 +32,7 @@
 
     <string-array name="activity_titles_sub_recyclerview">
         <item>RecyclerView 下拉刷新 1</item>
+        <item>RecyclerView 下拉刷新 2</item>
     </string-array>
 
 </resources>
