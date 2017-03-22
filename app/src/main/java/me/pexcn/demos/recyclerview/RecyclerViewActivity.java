@@ -24,7 +24,7 @@ public class RecyclerViewActivity extends BaseListActivity {
                 intent.setClass(this, PullToRefreshActivity.class);
                 break;
             case 1:
-                intent.setClass(this, PullToRefresh2Activity.class);
+                intent.setClass(this, XRecyclerViewActivity.class);
                 break;
         }
     }
