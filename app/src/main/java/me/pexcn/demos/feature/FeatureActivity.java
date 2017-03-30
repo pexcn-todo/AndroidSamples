@@ -32,6 +32,9 @@ public class FeatureActivity extends BaseListActivity {
             case 3:
                 intent.setClass(this, TransparentNavBarActivity.class);
                 break;
+            case 4:
+                intent.setClass(this, GridView9PalaceGridActivity.class);
+                break;
         }
     }
 
