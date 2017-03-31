@@ -16,11 +16,12 @@ import me.pexcn.demos.feature.adapter.RecyclerView9PalaceGridAdapter;
  * Created by pexcn on 2017-03-30.
  */
 public class RecyclerView9PalaceGridActivity extends BaseActivity {
-    public static final int REQUEST_CODE_PICK_PICTURE = 0x01;
+    public static final int REQUEST_CODE_PICK_PICTURE = 0x02;
 
-    private ArrayList<Uri> mUris;
+    @SuppressWarnings("FieldCanBeLocal")
     private RecyclerView mRecyclerView;
     private RecyclerView9PalaceGridAdapter mAdapter;
+    private ArrayList<Uri> mUris;
 
     @Override
     protected int getLayoutId() {

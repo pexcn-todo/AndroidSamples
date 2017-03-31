@@ -34,8 +34,7 @@ public class RecyclerView9PalaceGridAdapter extends RecyclerView.Adapter<Recycle
             holder.itemView.setOnClickListener(v -> mListener.onItemClick(v, position));
         }
 
-        if (position < mUris.size()) {
-            holder.mImageView.setImageURI(mUris.get(position));
+        if (mUris != null && position < mUris.size()) {
             holder.mImageView.setImageURI(mUris.get(position));
             if (holder.mImageView.getVisibility() != View.VISIBLE) {
                 holder.mImageView.setVisibility(View.VISIBLE);
@@ -79,7 +78,7 @@ public class RecyclerView9PalaceGridAdapter extends RecyclerView.Adapter<Recycle
 
     public void add(Uri uri) {
         mUris.add(uri);
-        notifyItemRangeChanged(mUris.size() - 1, mUris.size() + 1);
+        notifyItemRangeChanged(mUris.size() - 1, mUris.size());
     }
 
     public void remove(int position) {
