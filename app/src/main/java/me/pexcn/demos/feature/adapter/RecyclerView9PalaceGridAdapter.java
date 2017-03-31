@@ -78,12 +78,12 @@ public class RecyclerView9PalaceGridAdapter extends RecyclerView.Adapter<Recycle
 
     public void add(Uri uri) {
         mUris.add(uri);
-        notifyItemRangeChanged(mUris.size() - 1, mUris.size());
+        notifyDataSetChanged();
     }
 
     public void remove(int position) {
         mUris.remove(position);
-        notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 
     private OnItemClickListener mListener;
