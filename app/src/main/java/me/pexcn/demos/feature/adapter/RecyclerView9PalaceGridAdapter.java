@@ -14,6 +14,8 @@ import me.pexcn.demos.R;
 
 /**
  * Created by pexcn on 2017-03-30.
+ * <p>
+ * FIXME: notifyChange
  */
 public class RecyclerView9PalaceGridAdapter extends RecyclerView.Adapter<RecyclerView9PalaceGridAdapter.ViewHolder> {
     private ArrayList<Uri> mUris;
