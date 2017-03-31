@@ -35,6 +35,9 @@ public class FeatureActivity extends BaseListActivity {
             case 4:
                 intent.setClass(this, GridView9PalaceGridActivity.class);
                 break;
+            case 5:
+                intent.setClass(this, RecyclerView9PalaceGridActivity.class);
+                break;
         }
     }
 

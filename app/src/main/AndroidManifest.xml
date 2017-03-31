@@ -37,6 +37,7 @@
             android:name=".feature.TransparentNavBarActivity"
             android:theme="@style/TransparentNavigationBarAppTheme" />
         <activity android:name=".feature.GridView9PalaceGridActivity" />
+        <activity android:name=".feature.RecyclerView9PalaceGridActivity" />
 
         <!-- Fixes -->
         <activity android:name=".fixes.ListNestedScrollActivity" />

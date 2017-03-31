@@ -15,6 +15,7 @@
         <item>Activity 滑动返回</item>
         <item>透明的 Navigation Bar</item>
         <item>GridView 实现 9 宫格</item>
+        <item>RecyclerView 实现 9 宫格</item>
     </string-array>
 
     <string-array name="activity_titles_sub_fixes">

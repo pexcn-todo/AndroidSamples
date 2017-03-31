@@ -51,7 +51,7 @@ public class GridView9PalaceGridAdapter extends BaseAdapter {
         final ViewHolder holder;
         if (convertView == null) {
             convertView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_gridview_grid, parent, false);
+                    .inflate(R.layout.item_9_palace_grid, parent, false);
             holder = new ViewHolder();
             holder.mImageView = (ImageView) convertView.findViewById(R.id.image);
             holder.mDelete = (ImageView) convertView.findViewById(R.id.delete);
@@ -60,7 +60,7 @@ public class GridView9PalaceGridAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        if (position < mUris.size()) {
+        if (mUris != null && position < mUris.size()) {
             holder.mImageView.setImageURI(mUris.get(position));
             if (holder.mImageView.getVisibility() != View.VISIBLE) {
                 holder.mImageView.setVisibility(View.VISIBLE);
