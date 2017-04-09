@@ -38,6 +38,12 @@ public class FeatureActivity extends BaseListActivity {
             case 5:
                 intent.setClass(this, RecyclerView9PalaceGridActivity.class);
                 break;
+            case 6:
+                intent.setClass(this, BottomSheetDialogActivity.class);
+                break;
+            case 7:
+                intent.setClass(this, LruCacheActivity.class);
+                break;
         }
     }
 

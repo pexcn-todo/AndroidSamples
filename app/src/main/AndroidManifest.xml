@@ -38,6 +38,8 @@
             android:theme="@style/TransparentNavigationBarAppTheme" />
         <activity android:name=".feature.GridView9PalaceGridActivity" />
         <activity android:name=".feature.RecyclerView9PalaceGridActivity" />
+        <activity android:name=".feature.BottomSheetDialogActivity" />
+        <activity android:name=".feature.LruCacheActivity" />
 
         <!-- Fixes -->
         <activity android:name=".fixes.ListNestedScrollActivity" />
