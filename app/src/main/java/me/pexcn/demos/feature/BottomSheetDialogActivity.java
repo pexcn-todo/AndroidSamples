@@ -1,7 +1,14 @@
 package me.pexcn.demos.feature;
 
 import android.support.design.widget.BottomSheetDialog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import me.pexcn.demos.R;
 import me.pexcn.demos.base.BaseActivity;
@@ -11,6 +18,7 @@ import me.pexcn.demos.base.BaseActivity;
  */
 public class BottomSheetDialogActivity extends BaseActivity {
     private Button mShow;
+    private ViewGroup mRootView;
 
     @Override
     protected int getLayoutId() {
@@ -22,9 +30,20 @@ public class BottomSheetDialogActivity extends BaseActivity {
         super.init();
 
         mShow = (Button) findViewById(R.id.show);
+        mRootView = (ViewGroup) findViewById(android.R.id.content);
+
         mShow.setOnClickListener(v -> {
             BottomSheetDialog dialog = new BottomSheetDialog(this);
-            dialog.setContentView(R.layout.dialog_bottom_sheet);
+
+            View view = LayoutInflater.from(this).inflate(R.layout.dialog_bottom_sheet, mRootView, false);
+            ListView listView = (ListView) view.findViewById(R.id.list_view);
+            ArrayList<String> datas = new ArrayList<>();
+            for (int i = 0; i < 50; i++) {
+                datas.add("Item " + i);
+            }
+            listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, datas));
+
+            dialog.setContentView(view);
             dialog.show();
         });
     }

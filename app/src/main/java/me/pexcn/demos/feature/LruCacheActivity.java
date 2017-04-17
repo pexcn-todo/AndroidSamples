@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
+import me.pexcn.android.utils.common.LogUtils;
 import me.pexcn.demos.R;
 import me.pexcn.demos.base.BaseActivity;
-import me.pexcn.simpleutils.common.LogUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;

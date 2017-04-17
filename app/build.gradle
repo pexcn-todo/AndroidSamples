@@ -37,10 +37,10 @@ dependencies {
     compile 'com.android.support:customtabs:25.3.1'
 
     // Square
-    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
 
     // Rx
-    compile 'io.reactivex:rxjava:1.2.7'
+    compile 'io.reactivex:rxjava:1.2.9'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.3@aar'
 
@@ -49,6 +49,6 @@ dependencies {
 
     // My library
     compile 'me.pexcn:swipebacklayout:1.0.2'
-    compile 'me.pexcn:simpleutils:0.0.14'
-    compile 'me.pexcn:android-base:0.0.15'
+    compile 'me.pexcn:android-utils:0.1.1'
+    compile 'me.pexcn:android-base:0.1.0'
 }

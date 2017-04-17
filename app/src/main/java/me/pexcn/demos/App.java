@@ -2,7 +2,7 @@ package me.pexcn.demos;
 
 import android.app.Application;
 
-import me.pexcn.simpleutils.Utils;
+import me.pexcn.android.utils.Utils;
 
 /**
  * Created by pexcn on 2016-09-25.

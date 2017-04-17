@@ -7,9 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
 
+import me.pexcn.android.utils.common.LogUtils;
+import me.pexcn.android.utils.common.UIUtils;
 import me.pexcn.demos.R;
-import me.pexcn.simpleutils.common.LogUtils;
-import me.pexcn.simpleutils.common.UIUtils;
 import me.pexcn.swipebacklayout.SwipeBackLayout;
 import me.pexcn.swipebacklayout.app.SwipeBackActivity;
 
