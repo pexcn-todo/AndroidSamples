@@ -44,6 +44,9 @@ public class FeatureActivity extends BaseListActivity {
             case 7:
                 intent.setClass(this, LruCacheActivity.class);
                 break;
+            case 8:
+                intent.setClass(this, DiskLruCacheActivity.class);
+                break;
         }
     }
 

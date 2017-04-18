@@ -40,6 +40,7 @@
         <activity android:name=".feature.RecyclerView9PalaceGridActivity" />
         <activity android:name=".feature.BottomSheetDialogActivity" />
         <activity android:name=".feature.LruCacheActivity" />
+        <activity android:name=".feature.DiskLruCacheActivity" />
 
         <!-- Fixes -->
         <activity android:name=".fixes.ListNestedScrollActivity" />

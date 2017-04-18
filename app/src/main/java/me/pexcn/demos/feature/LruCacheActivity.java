@@ -52,7 +52,7 @@ public class LruCacheActivity extends BaseActivity {
         super.init();
 
         TextView text = (TextView) findViewById(json);
-        ImageView image = (ImageView) findViewById(R.id.bitmap);
+        ImageView image = (ImageView) findViewById(R.id.image);
 
         final OkHttpClient client = new OkHttpClient();
 

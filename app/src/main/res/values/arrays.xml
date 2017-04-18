@@ -18,6 +18,7 @@
         <item>RecyclerView 实现 9 宫格</item>
         <item>Bottom Sheet Dialog</item>
         <item>Lru Cache</item>
+        <item>Disk Lru Cache</item>
     </string-array>
 
     <string-array name="activity_titles_sub_fixes">
