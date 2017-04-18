@@ -15,11 +15,6 @@ import me.pexcn.demos.base.BaseActivity;
  * Created by pexcn on 2016-10-19.
  */
 public class TransparentNavBarActivity extends BaseActivity {
-    @SuppressWarnings("FieldCanBeLocal")
-    private ListView mListView;
-    @SuppressWarnings("FieldCanBeLocal")
-    private List<String> mItems;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_feature_transparent_nav_bar;
@@ -34,12 +29,12 @@ public class TransparentNavBarActivity extends BaseActivity {
     @Override
     protected void init() {
         super.init();
-        mListView = (ListView) findViewById(R.id.listview);
-        mItems = new ArrayList<>();
+        ListView listView = (ListView) findViewById(R.id.listview);
+        List<String> items = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            mItems.add("Item " + i);
+            items.add("Item " + i);
         }
-        mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mItems));
+        listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // Toolbar fixes
