@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "me.pexcn.demos"
+        applicationId "me.pexcn.android.samples"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
