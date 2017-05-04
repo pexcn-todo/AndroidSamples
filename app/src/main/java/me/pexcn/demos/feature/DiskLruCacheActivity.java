@@ -10,9 +10,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import libcore.io.DiskLruCache;
-import me.pexcn.android.utils.common.LogUtils;
-import me.pexcn.android.utils.common.PackageUtils;
+import me.pexcn.android.utils.component.PackageUtils;
 import me.pexcn.android.utils.encrypt.MD5Utils;
+import me.pexcn.android.utils.io.LogUtils;
 import me.pexcn.demos.R;
 import me.pexcn.demos.base.BaseActivity;
 import okhttp3.Call;

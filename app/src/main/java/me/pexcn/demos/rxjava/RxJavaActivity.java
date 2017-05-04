@@ -1,10 +1,5 @@
 package me.pexcn.demos.rxjava;
 
-import android.content.Intent;
-
-import java.util.Arrays;
-import java.util.List;
-
 import me.pexcn.demos.R;
 import me.pexcn.demos.base.BaseListActivity;
 
@@ -13,18 +8,18 @@ import me.pexcn.demos.base.BaseListActivity;
  */
 public class RxJavaActivity extends BaseListActivity {
     @Override
-    public List<String> getList() {
-        return Arrays.asList(getResources().getStringArray(R.array.activity_titles_sub_rxjava));
+    public String[] getActivityList() {
+        return getResources().getStringArray(R.array.activity_titles_sub_rxjava);
     }
 
     @Override
-    public void setUpSubActivity(Intent intent, int position) {
+    protected void startSubActivity(int position) {
         switch (position) {
             case 0:
-                intent.setClass(this, RxJavaSubscribeAndObserverActivity.class);
+                setSubActivity(position, RxJavaSubscribeAndObserverActivity.class);
                 break;
             case 1:
-                intent.setClass(this, RxPermissionsActivity.class);
+                setSubActivity(position, RxPermissionsActivity.class);
                 break;
         }
     }

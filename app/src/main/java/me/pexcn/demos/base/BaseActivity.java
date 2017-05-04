@@ -12,11 +12,9 @@ public abstract class BaseActivity extends me.pexcn.android.base.ui.BaseActivity
     @CallSuper
     @Override
     protected void init() {
-        final String title;
-        final ActionBar actionBar;
-        if ((actionBar = getSupportActionBar()) != null
-                && (title = getIntent().getStringExtra(KEY_ACTIVITY_TITLE)) != null
-                && isSubActivity()) {
+        final ActionBar actionBar = getSupportActionBar();
+        final String title = getIntent().getStringExtra(KEY_ACTIVITY_TITLE);
+        if (actionBar != null && title != null && isSubActivity()) {
             actionBar.setTitle(title);
         }
     }

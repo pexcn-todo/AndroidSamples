@@ -1,10 +1,5 @@
 package me.pexcn.demos.feature;
 
-import android.content.Intent;
-
-import java.util.Arrays;
-import java.util.List;
-
 import me.pexcn.demos.R;
 import me.pexcn.demos.base.BaseListActivity;
 
@@ -13,39 +8,39 @@ import me.pexcn.demos.base.BaseListActivity;
  */
 public class FeatureActivity extends BaseListActivity {
     @Override
-    public List<String> getList() {
-        return Arrays.asList(getResources().getStringArray(R.array.activity_titles_sub_feature));
+    public String[] getActivityList() {
+        return getResources().getStringArray(R.array.activity_titles_sub_feature);
     }
 
     @Override
-    public void setUpSubActivity(Intent intent, int position) {
+    protected void startSubActivity(int position) {
         switch (position) {
             case 0:
-                intent.setClass(this, ChromeCustomTabsActivity.class);
+                setSubActivity(position, ChromeCustomTabsActivity.class);
                 break;
             case 1:
-                intent.setClass(this, RequestPermissionActivity.class);
+                setSubActivity(position, RequestPermissionActivity.class);
                 break;
             case 2:
-                intent.setClass(this, SwipeBackLayoutActivity.class);
+                setSubActivity(position, SwipeBackLayoutActivity.class);
                 break;
             case 3:
-                intent.setClass(this, TransparentNavBarActivity.class);
+                setSubActivity(position, TransparentNavBarActivity.class);
                 break;
             case 4:
-                intent.setClass(this, GridView9PalaceGridActivity.class);
+                setSubActivity(position, GridView9PalaceGridActivity.class);
                 break;
             case 5:
-                intent.setClass(this, RecyclerView9PalaceGridActivity.class);
+                setSubActivity(position, RecyclerView9PalaceGridActivity.class);
                 break;
             case 6:
-                intent.setClass(this, BottomSheetDialogActivity.class);
+                setSubActivity(position, BottomSheetDialogActivity.class);
                 break;
             case 7:
-                intent.setClass(this, LruCacheActivity.class);
+                setSubActivity(position, LruCacheActivity.class);
                 break;
             case 8:
-                intent.setClass(this, DiskLruCacheActivity.class);
+                setSubActivity(position, DiskLruCacheActivity.class);
                 break;
         }
     }

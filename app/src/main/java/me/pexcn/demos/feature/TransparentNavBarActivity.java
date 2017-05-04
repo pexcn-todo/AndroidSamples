@@ -29,7 +29,7 @@ public class TransparentNavBarActivity extends BaseActivity {
     @Override
     protected void init() {
         super.init();
-        ListView listView = (ListView) findViewById(R.id.listview);
+        ListView listView = (ListView) findViewById(R.id.list_view);
         List<String> items = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             items.add("Item " + i);
