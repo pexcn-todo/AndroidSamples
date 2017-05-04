@@ -17,7 +17,6 @@ import me.pexcn.demos.base.BaseActivity;
  * Created by pexcn on 2017-03-31.
  */
 public class BottomSheetDialogActivity extends BaseActivity {
-    private Button mShow;
     private ViewGroup mRootView;
 
     @Override
@@ -29,10 +28,10 @@ public class BottomSheetDialogActivity extends BaseActivity {
     protected void init() {
         super.init();
 
-        mShow = (Button) findViewById(R.id.show);
+        Button show = (Button) findViewById(R.id.show);
         mRootView = (ViewGroup) findViewById(android.R.id.content);
 
-        mShow.setOnClickListener(v -> {
+        show.setOnClickListener(v -> {
             BottomSheetDialog dialog = new BottomSheetDialog(this);
 
             View view = LayoutInflater.from(this).inflate(R.layout.dialog_bottom_sheet, mRootView, false);

@@ -8,6 +8,7 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_margin="5dp"
+        android:contentDescription="@null"
         android:scaleType="centerInside"
         android:src="@drawable/ic_action_add_photo" />
 
@@ -17,6 +18,7 @@
         android:layout_height="32dp"
         android:layout_alignEnd="@id/image"
         android:layout_alignTop="@id/image"
+        android:contentDescription="@null"
         android:src="@drawable/ic_action_delete" />
 
 </RelativeLayout>
