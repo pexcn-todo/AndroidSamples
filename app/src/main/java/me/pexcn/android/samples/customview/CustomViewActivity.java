@@ -1,7 +1,7 @@
 package me.pexcn.android.samples.customview;
 
 import me.pexcn.android.samples.R;
-import me.pexcn.android.samples.BaseListActivity;
+import me.pexcn.android.samples.base.BaseListActivity;
 
 /**
  * Created by pexcn on 2017-03-17.

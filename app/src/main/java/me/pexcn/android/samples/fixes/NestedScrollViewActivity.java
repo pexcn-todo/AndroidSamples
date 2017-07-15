@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.pexcn.android.samples.R;
-import me.pexcn.android.samples.BaseActivity;
+import me.pexcn.android.samples.base.BaseActivity;
 
 public class NestedScrollViewActivity extends BaseActivity {
     @SuppressWarnings("FieldCanBeLocal")

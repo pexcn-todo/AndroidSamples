@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import me.pexcn.android.samples.R;
-import me.pexcn.android.samples.BaseActivity;
+import me.pexcn.android.samples.base.BaseActivity;
 
 /**
  * Created by pexcn on 2017-03-17.

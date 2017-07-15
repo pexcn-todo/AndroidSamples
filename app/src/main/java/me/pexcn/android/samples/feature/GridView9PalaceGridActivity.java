@@ -10,7 +10,7 @@ import android.widget.GridView;
 import java.util.ArrayList;
 
 import me.pexcn.android.samples.R;
-import me.pexcn.android.samples.BaseActivity;
+import me.pexcn.android.samples.base.BaseActivity;
 import me.pexcn.android.samples.feature.adapter.GridView9PalaceGridAdapter;
 
 /**

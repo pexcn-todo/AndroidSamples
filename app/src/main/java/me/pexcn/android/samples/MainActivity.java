@@ -1,5 +1,6 @@
 package me.pexcn.android.samples;
 
+import me.pexcn.android.samples.base.BaseListActivity;
 import me.pexcn.android.samples.customview.CustomViewActivity;
 import me.pexcn.android.samples.feature.FeatureActivity;
 import me.pexcn.android.samples.fixes.FixesActivity;

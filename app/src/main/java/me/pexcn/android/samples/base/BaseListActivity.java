@@ -1,10 +1,12 @@
-package me.pexcn.android.samples;
+package me.pexcn.android.samples.base;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import me.pexcn.android.samples.R;
 
 /**
  * Created by pexcn on 2017-03-17.

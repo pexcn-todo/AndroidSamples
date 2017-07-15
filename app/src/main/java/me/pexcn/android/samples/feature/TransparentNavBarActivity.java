@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.pexcn.android.samples.R;
-import me.pexcn.android.samples.BaseActivity;
+import me.pexcn.android.samples.base.BaseActivity;
 
 /**
  * Created by pexcn on 2016-10-19.

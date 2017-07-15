@@ -14,7 +14,7 @@ import me.pexcn.android.utils.component.PackageUtils;
 import me.pexcn.android.utils.encrypt.MD5Utils;
 import me.pexcn.android.utils.io.LogUtils;
 import me.pexcn.android.samples.R;
-import me.pexcn.android.samples.BaseActivity;
+import me.pexcn.android.samples.base.BaseActivity;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;

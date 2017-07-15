@@ -1,4 +1,4 @@
-package me.pexcn.android.samples;
+package me.pexcn.android.samples.base;
 
 import android.support.annotation.CallSuper;
 import android.support.v7.app.ActionBar;
