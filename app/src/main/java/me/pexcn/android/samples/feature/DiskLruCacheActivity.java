@@ -1,20 +1,24 @@
 package me.pexcn.android.samples.feature;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.jakewharton.disklrucache.DiskLruCache;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import libcore.io.DiskLruCache;
-import me.pexcn.android.utils.component.PackageUtils;
-import me.pexcn.android.utils.encrypt.MD5Utils;
-import me.pexcn.android.utils.io.LogUtils;
 import me.pexcn.android.samples.R;
 import me.pexcn.android.samples.base.BaseActivity;
+import me.pexcn.android.utils.common.AppUtils;
+import me.pexcn.android.utils.common.LogUtils;
+import me.pexcn.android.utils.common.MD5Utils;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -38,13 +42,13 @@ public class DiskLruCacheActivity extends BaseActivity {
 
     @SuppressLint("SetTextI18n")
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
 
         mOkHttpClient = new OkHttpClient();
 
         File path = new File(getCacheDir().getAbsoluteFile() + "/lru_cache");
-        int version = PackageUtils.getVersionCode();
+        int version = AppUtils.getVersionCode();
         long maxSize = 1024 * 1024 * 16;
         if (!path.exists()) {
             if (!path.mkdirs()) {
@@ -61,104 +65,123 @@ public class DiskLruCacheActivity extends BaseActivity {
         Button write = (Button) findViewById(R.id.write);
         Button read = (Button) findViewById(R.id.read);
         Button remove = (Button) findViewById(R.id.remove);
-        TextView size = (TextView) findViewById(R.id.size);
+        final TextView size = (TextView) findViewById(R.id.size);
 
-        write.setOnClickListener(v -> {
-            try {
-                DiskLruCache.Editor editor = mDiskLruCache.edit(MD5Utils.get(JSON_URL));
-                OutputStream os = editor.newOutputStream(0);
-                mOkHttpClient.newCall(new Request.Builder().url(JSON_URL).build()).enqueue(new Callback() {
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        byte[] bytes = response.body().bytes();
-                        os.write(bytes);
-                        os.flush();
-                        os.close();
-                        editor.commit();
-                        LogUtils.d("Cache write successfully");
-                        runOnUiThread(() -> size.setText(String.valueOf(mDiskLruCache.size()) + " Bytes"));
-                    }
-
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        LogUtils.d("Cache write failure");
-                        try {
+        write.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    final DiskLruCache.Editor editor = mDiskLruCache.edit(MD5Utils.get(JSON_URL));
+                    final OutputStream os = editor.newOutputStream(0);
+                    mOkHttpClient.newCall(new Request.Builder().url(JSON_URL).build()).enqueue(new Callback() {
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            byte[] bytes = response.body().bytes();
+                            os.write(bytes);
+                            os.flush();
                             os.close();
-                            editor.abort();
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
+                            editor.commit();
+                            LogUtils.d("Cache write successfully");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    size.setText(String.valueOf(mDiskLruCache.size()) + " Bytes");
+                                }
+                            });
                         }
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-            try {
-                DiskLruCache.Editor editor = mDiskLruCache.edit(MD5Utils.get(IMAGE_URL));
-                OutputStream os = editor.newOutputStream(0);
-                mOkHttpClient.newCall(new Request.Builder().url(IMAGE_URL).build()).enqueue(new Callback() {
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        byte[] bytes = response.body().bytes();
-                        os.write(bytes);
-                        os.flush();
-                        os.close();
-                        editor.commit();
-                        LogUtils.d("Cache write successfully");
-                        runOnUiThread(() -> size.setText(String.valueOf(mDiskLruCache.size()) + " Bytes"));
-                    }
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            LogUtils.d("Cache write failure");
+                            try {
+                                os.close();
+                                editor.abort();
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        LogUtils.d("Cache write failure");
-                        try {
+                try {
+                    final DiskLruCache.Editor editor = mDiskLruCache.edit(MD5Utils.get(IMAGE_URL));
+                    final OutputStream os = editor.newOutputStream(0);
+                    mOkHttpClient.newCall(new Request.Builder().url(IMAGE_URL).build()).enqueue(new Callback() {
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            byte[] bytes = response.body().bytes();
+                            os.write(bytes);
+                            os.flush();
                             os.close();
-                            editor.abort();
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
+                            editor.commit();
+                            LogUtils.d("Cache write successfully");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    size.setText(String.valueOf(mDiskLruCache.size()) + " Bytes");
+                                }
+                            });
                         }
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
+
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            LogUtils.d("Cache write failure");
+                            try {
+                                os.close();
+                                editor.abort();
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
-        read.setOnClickListener(v -> {
-            try {
-                DiskLruCache.Snapshot snapshot = mDiskLruCache.get(MD5Utils.get(JSON_URL));
-                if (snapshot != null) {
-                    InputStream is = snapshot.getInputStream(0);
-                    LogUtils.d("Cache object: " + is.toString());
-                } else {
-                    LogUtils.d("Cache not available");
+        read.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    DiskLruCache.Snapshot snapshot = mDiskLruCache.get(MD5Utils.get(JSON_URL));
+                    if (snapshot != null) {
+                        InputStream is = snapshot.getInputStream(0);
+                        LogUtils.d("Cache object: " + is.toString());
+                    } else {
+                        LogUtils.d("Cache not available");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-            try {
-                DiskLruCache.Snapshot snapshot = mDiskLruCache.get(MD5Utils.get(IMAGE_URL));
-                if (snapshot != null) {
-                    InputStream is = snapshot.getInputStream(0);
-                    LogUtils.d("Cache object: " + is.toString());
-                } else {
-                    LogUtils.d("Cache not available");
+                try {
+                    DiskLruCache.Snapshot snapshot = mDiskLruCache.get(MD5Utils.get(IMAGE_URL));
+                    if (snapshot != null) {
+                        InputStream is = snapshot.getInputStream(0);
+                        LogUtils.d("Cache object: " + is.toString());
+                    } else {
+                        LogUtils.d("Cache not available");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         });
 
-        remove.setOnClickListener(v -> {
-            try {
-                mDiskLruCache.remove(MD5Utils.get(JSON_URL));
-                mDiskLruCache.remove(MD5Utils.get(IMAGE_URL));
-                size.setText(String.valueOf(mDiskLruCache.size()) + " Bytes");
-                LogUtils.d("Cache removed");
-            } catch (IOException e) {
-                e.printStackTrace();
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    mDiskLruCache.remove(MD5Utils.get(JSON_URL));
+                    mDiskLruCache.remove(MD5Utils.get(IMAGE_URL));
+                    size.setText(String.valueOf(mDiskLruCache.size()) + " Bytes");
+                    LogUtils.d("Cache removed");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

@@ -1,6 +1,8 @@
 package me.pexcn.android.samples.feature;
 
 import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -25,10 +27,10 @@ public class TransparentNavBarActivity extends BaseActivity {
         return true;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+
         ListView listView = (ListView) findViewById(R.id.list_view);
         List<String> items = new ArrayList<>();
         for (int i = 0; i < 100; i++) {

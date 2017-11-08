@@ -3,6 +3,8 @@ package me.pexcn.android.samples.feature;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -30,8 +32,8 @@ public class GridView9PalaceGridActivity extends BaseActivity implements Adapter
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
 
         mUris = new ArrayList<>();
         mAdapter = new GridView9PalaceGridAdapter(mUris);
@@ -41,9 +43,14 @@ public class GridView9PalaceGridActivity extends BaseActivity implements Adapter
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
         if (mUris != null && position < mUris.size()) {
-            view.findViewById(R.id.delete).setOnClickListener(v -> mAdapter.remove(position));
+            view.findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mAdapter.remove(position);
+                }
+            });
         } else {
             pickPicture();
         }

@@ -1,6 +1,8 @@
 package me.pexcn.android.samples.base;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,8 +22,8 @@ public abstract class BaseListActivity extends BaseActivity implements AdapterVi
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
         mItems = getActivityList();
         ListView list = (ListView) findViewById(R.id.list_view);
         list.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mItems));

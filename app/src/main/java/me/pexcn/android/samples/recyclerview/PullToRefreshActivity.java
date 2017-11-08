@@ -1,6 +1,8 @@
 package me.pexcn.android.samples.recyclerview;
 
+import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,23 +29,34 @@ public class PullToRefreshActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
 
         mAdapter = new PullToRefreshAdapter();
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
-        mSwipeRefreshLayout.setOnRefreshListener(() -> new Thread(() -> {
-            SystemClock.sleep(1500);
-            runOnUiThread(() -> {
-                mAdapter.add(0, "New item");
-                mRecyclerView.scrollToPosition(0);
-                if (mSwipeRefreshLayout.isRefreshing()) {
-                    mSwipeRefreshLayout.setRefreshing(false);
-                }
-            });
-        }).start());
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        SystemClock.sleep(1500);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mAdapter.add(0, "New item");
+                                mRecyclerView.scrollToPosition(0);
+                                if (mSwipeRefreshLayout.isRefreshing()) {
+                                    mSwipeRefreshLayout.setRefreshing(false);
+                                }
+                            }
+                        });
+                    }
+                }).start();
+            }
+        });
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.init();
     }

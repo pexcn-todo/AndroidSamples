@@ -1,5 +1,7 @@
 package me.pexcn.android.samples.fixes;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -26,8 +28,8 @@ public class NestedScrollViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
 
         mItems = new ArrayList<>();
         for (int i = 0; i < 30; i++) {

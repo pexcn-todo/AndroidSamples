@@ -1,6 +1,9 @@
 package me.pexcn.android.samples.fixes;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -27,8 +30,8 @@ public class ListNestedScrollActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
 
         mItems = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
@@ -38,18 +41,21 @@ public class ListNestedScrollActivity extends BaseActivity {
         mListView = (ListView) findViewById(R.id.list_view);
         mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mItems));
 
-        mListView.setOnTouchListener((v, event) -> {
-            int action = event.getAction();
-            switch (action) {
-                case MotionEvent.ACTION_DOWN:
-                    v.getParent().requestDisallowInterceptTouchEvent(true);
-                    break;
-                case MotionEvent.ACTION_UP:
-                    v.getParent().requestDisallowInterceptTouchEvent(false);
-                    break;
+        mListView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                v.onTouchEvent(event);
+                return true;
             }
-            v.onTouchEvent(event);
-            return true;
         });
     }
 }

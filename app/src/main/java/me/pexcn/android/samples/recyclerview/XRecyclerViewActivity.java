@@ -1,6 +1,8 @@
 package me.pexcn.android.samples.recyclerview;
 
+import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -51,8 +53,8 @@ public class XRecyclerViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
 
         for (int i = 0; i < 50; i++) {
             mItems.add("Item " + i);
@@ -64,25 +66,37 @@ public class XRecyclerViewActivity extends BaseActivity {
         mXRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                new Thread(() -> {
-                    SystemClock.sleep(1500);
-                    mItems.add(0, "New Item");
-                    runOnUiThread(() -> {
-                        mAdapter.notifyItemInserted(0);
-                        mXRecyclerView.refreshComplete();
-                    });
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        SystemClock.sleep(1500);
+                        mItems.add(0, "New Item");
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mAdapter.notifyItemInserted(0);
+                                mXRecyclerView.refreshComplete();
+                            }
+                        });
+                    }
                 }).start();
             }
 
             @Override
             public void onLoadMore() {
-                new Thread(() -> {
-                    SystemClock.sleep(1500);
-                    mItems.add("Load More");
-                    runOnUiThread(() -> {
-                        mAdapter.notifyItemInserted(mItems.size());
-                        mXRecyclerView.loadMoreComplete();
-                    });
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        SystemClock.sleep(1500);
+                        mItems.add("Load More");
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mAdapter.notifyItemInserted(mItems.size());
+                                mXRecyclerView.loadMoreComplete();
+                            }
+                        });
+                    }
                 }).start();
             }
         });

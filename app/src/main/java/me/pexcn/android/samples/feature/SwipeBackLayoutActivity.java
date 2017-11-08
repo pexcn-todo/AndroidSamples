@@ -1,15 +1,16 @@
 package me.pexcn.android.samples.feature;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
 
-import me.pexcn.android.utils.io.LogUtils;
-import me.pexcn.android.utils.view.UIUtils;
 import me.pexcn.android.samples.R;
+import me.pexcn.android.utils.common.LogUtils;
+import me.pexcn.android.utils.common.UIUtils;
 import me.pexcn.swipebacklayout.SwipeBackLayout;
 import me.pexcn.swipebacklayout.app.SwipeBackActivity;
 
@@ -43,23 +44,26 @@ public class SwipeBackLayoutActivity extends SwipeBackActivity {
         mModeGroup = (RadioGroup) findViewById(R.id.tracking_mode);
         mSwipeBackLayout = getSwipeBackLayout();
 
-        mModeGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            int flag = SwipeBackLayout.EDGE_LEFT;
-            switch (checkedId) {
-                case R.id.mode_left:
-                    flag = SwipeBackLayout.EDGE_LEFT;
-                    break;
-                case R.id.mode_right:
-                    flag = SwipeBackLayout.EDGE_RIGHT;
-                    break;
-                case R.id.mode_down:
-                    flag = SwipeBackLayout.EDGE_BOTTOM;
-                    break;
-                case R.id.mode_all:
-                    flag = SwipeBackLayout.EDGE_ALL;
-                    break;
+        mModeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                int flag = SwipeBackLayout.EDGE_LEFT;
+                switch (checkedId) {
+                    case R.id.mode_left:
+                        flag = SwipeBackLayout.EDGE_LEFT;
+                        break;
+                    case R.id.mode_right:
+                        flag = SwipeBackLayout.EDGE_RIGHT;
+                        break;
+                    case R.id.mode_down:
+                        flag = SwipeBackLayout.EDGE_BOTTOM;
+                        break;
+                    case R.id.mode_all:
+                        flag = SwipeBackLayout.EDGE_ALL;
+                        break;
+                }
+                mSwipeBackLayout.setEdgeTrackingEnabled(flag);
             }
-            mSwipeBackLayout.setEdgeTrackingEnabled(flag);
         });
 
         mSwipeBackLayout.addSwipeListener(new SwipeBackLayout.SwipeListener() {

@@ -4,7 +4,11 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.Button;
 
 import me.pexcn.android.samples.R;
@@ -27,21 +31,24 @@ public class ChromeCustomTabsActivity extends BaseActivity {
         return true;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+
         mButton = (Button) findViewById(R.id.open);
-        mButton.setOnClickListener(v -> {
-            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder()
-                    .setToolbarColor(getResources().getColor(R.color.colorPrimary))
-                    .setShowTitle(true)
-                    .addMenuItem("测试菜单", PendingIntent.getActivity(this, 1, new Intent(), 0))
-                    .setActionButton(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_search), "测试", PendingIntent.getActivity(this, 1, new Intent(), 0))
-                    .addDefaultShareMenuItem()
-                    .build();
-            customTabsIntent.intent.setPackage("com.android.chrome");
-            customTabsIntent.launchUrl(this, Uri.parse("https://source.android.com"));
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder()
+                        .setToolbarColor(ContextCompat.getColor(ChromeCustomTabsActivity.this, R.color.colorPrimary))
+                        .setShowTitle(true)
+                        .addMenuItem("测试菜单", PendingIntent.getActivity(ChromeCustomTabsActivity.this, 1, new Intent(), 0))
+                        .setActionButton(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_search), "测试", PendingIntent.getActivity(ChromeCustomTabsActivity.this, 1, new Intent(), 0))
+                        .addDefaultShareMenuItem()
+                        .build();
+                customTabsIntent.intent.setPackage("com.android.chrome");
+                customTabsIntent.launchUrl(ChromeCustomTabsActivity.this, Uri.parse("https://source.android.com"));
+            }
         });
     }
 }

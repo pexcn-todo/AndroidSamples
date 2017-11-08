@@ -17,6 +17,7 @@ import me.pexcn.android.samples.R;
  * <p>
  * FIXME: notifyChange
  */
+@SuppressWarnings("WeakerAccess")
 public class RecyclerView9PalaceGridAdapter extends RecyclerView.Adapter<RecyclerView9PalaceGridAdapter.ViewHolder> {
     private ArrayList<Uri> mUris;
 
@@ -31,9 +32,14 @@ public class RecyclerView9PalaceGridAdapter extends RecyclerView.Adapter<Recycle
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         if (mListener != null) {
-            holder.itemView.setOnClickListener(v -> mListener.onItemClick(v, position));
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.onItemClick(v, holder.getAdapterPosition());
+                }
+            });
         }
 
         if (mUris != null && position < mUris.size()) {
@@ -66,7 +72,6 @@ public class RecyclerView9PalaceGridAdapter extends RecyclerView.Adapter<Recycle
         return mUris.size() + 1;
     }
 
-    @SuppressWarnings("WeakerAccess")
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
         public ImageView mDelete;
@@ -94,7 +99,6 @@ public class RecyclerView9PalaceGridAdapter extends RecyclerView.Adapter<Recycle
         this.mListener = listener;
     }
 
-    @SuppressWarnings("WeakerAccess")
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }

@@ -2,10 +2,13 @@ package me.pexcn.android.samples.feature;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.Button;
 
 import me.pexcn.android.samples.R;
@@ -31,21 +34,25 @@ public class RequestPermissionActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+
         mButton = (Button) findViewById(R.id.request);
-        mButton.setOnClickListener(v -> {
-            // 检查是否已授权
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
-                    // 可以请求权限
-                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "可以请求权限", Snackbar.LENGTH_LONG);
-                    mSnackbar.show();
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, READ_CONTACTS_REQUEST_CODE);
-                } else {
-                    // 已经“不再询问”地拒绝了该权限
-                    mSnackbar = Snackbar.make(findViewById(android.R.id.content), "已经不再询问地拒绝了", Snackbar.LENGTH_LONG);
-                    mSnackbar.show();
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 检查是否已授权
+                if (ContextCompat.checkSelfPermission(RequestPermissionActivity.this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(RequestPermissionActivity.this, Manifest.permission.READ_CONTACTS)) {
+                        // 可以请求权限
+                        mSnackbar = Snackbar.make(findViewById(android.R.id.content), "可以请求权限", Snackbar.LENGTH_LONG);
+                        mSnackbar.show();
+                        ActivityCompat.requestPermissions(RequestPermissionActivity.this, new String[]{Manifest.permission.READ_CONTACTS}, READ_CONTACTS_REQUEST_CODE);
+                    } else {
+                        // 已经“不再询问”地拒绝了该权限
+                        mSnackbar = Snackbar.make(findViewById(android.R.id.content), "已经不再询问地拒绝了", Snackbar.LENGTH_LONG);
+                        mSnackbar.show();
+                    }
                 }
             }
         });

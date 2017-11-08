@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
-import me.pexcn.android.utils.io.LogUtils;
 import me.pexcn.android.samples.R;
 import me.pexcn.android.samples.base.BaseActivity;
+import me.pexcn.android.utils.common.LogUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -48,63 +48,72 @@ public class LruCacheActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
 
-        TextView text = (TextView) findViewById(json);
-        ImageView image = (ImageView) findViewById(R.id.image);
+        final TextView text = (TextView) findViewById(json);
+        final ImageView image = (ImageView) findViewById(R.id.image);
 
         final OkHttpClient client = new OkHttpClient();
 
-        findViewById(R.id.load).setOnClickListener(v -> {
-            if (mJSONCache.get(0x01) == null) {
-                LogUtils.d("Network Request --> json");
-                client.newCall(new Request.Builder().url(JSON_URL).build()).enqueue(new Callback() {
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        String json = response.body().string();
-                        LogUtils.d("Network Response --> " + json);
-                        mJSONCache.put(0x01, json);
-                        text.post(() -> {
-                            text.setVisibility(View.VISIBLE);
-                            text.setText(json);
-                        });
-                    }
+        findViewById(R.id.load).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mJSONCache.get(0x01) == null) {
+                    LogUtils.d("Network Request --> json");
+                    client.newCall(new Request.Builder().url(JSON_URL).build()).enqueue(new Callback() {
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            final String json = response.body().string();
+                            LogUtils.d("Network Response --> " + json);
+                            mJSONCache.put(0x01, json);
+                            text.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    text.setVisibility(View.VISIBLE);
+                                    text.setText(json);
+                                }
+                            });
+                        }
 
-                    @Override
-                    public void onFailure(Call call, IOException e) {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
 
-                    }
-                });
-            } else {
-                LogUtils.d("Cached --> " + mJSONCache.get(0x01));
-                text.setVisibility(View.VISIBLE);
-                text.setText(mJSONCache.get(0x01));
-            }
+                        }
+                    });
+                } else {
+                    LogUtils.d("Cached --> " + mJSONCache.get(0x01));
+                    text.setVisibility(View.VISIBLE);
+                    text.setText(mJSONCache.get(0x01));
+                }
 
-            if (mBitmapCache.get("bitmap") == null) {
-                LogUtils.d("Network Request --> bitmap");
-                client.newCall(new Request.Builder().url(BITMAP_URL).build()).enqueue(new Callback() {
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        LogUtils.d("Network Response --> bitmap");
-                        Bitmap bitmap = BitmapFactory.decodeStream(response.body().byteStream());
-                        mBitmapCache.put("bitmap", bitmap);
-                        image.post(() -> {
-                            image.setVisibility(View.VISIBLE);
-                            image.setImageBitmap(bitmap);
-                        });
-                    }
+                if (mBitmapCache.get("bitmap") == null) {
+                    LogUtils.d("Network Request --> bitmap");
+                    client.newCall(new Request.Builder().url(BITMAP_URL).build()).enqueue(new Callback() {
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            LogUtils.d("Network Response --> bitmap");
+                            final Bitmap bitmap = BitmapFactory.decodeStream(response.body().byteStream());
+                            mBitmapCache.put("bitmap", bitmap);
+                            image.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    image.setVisibility(View.VISIBLE);
+                                    image.setImageBitmap(bitmap);
+                                }
+                            });
+                        }
 
-                    @Override
-                    public void onFailure(Call call, IOException e) {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
 
-                    }
-                });
-            } else {
-                LogUtils.d("Cached --> bitmap");
-                image.setVisibility(View.VISIBLE);
-                image.setImageBitmap(mBitmapCache.get("bitmap"));
+                        }
+                    });
+                } else {
+                    LogUtils.d("Cached --> bitmap");
+                    image.setVisibility(View.VISIBLE);
+                    image.setImageBitmap(mBitmapCache.get("bitmap"));
+                }
             }
         });
     }

@@ -3,8 +3,11 @@ package me.pexcn.android.samples.feature;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -29,19 +32,27 @@ public class RecyclerView9PalaceGridActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(@Nullable Bundle savedInstanceState) {
+        super.init(savedInstanceState);
 
         mUris = new ArrayList<>();
         mAdapter = new RecyclerView9PalaceGridAdapter(mUris);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener((view, position) -> {
-            if (mUris != null && position < mUris.size()) {
-                view.findViewById(R.id.delete).setOnClickListener(v -> mAdapter.remove(position));
-            } else {
-                pickPicture();
+        mAdapter.setOnItemClickListener(new RecyclerView9PalaceGridAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, final int position) {
+                if (mUris != null && position < mUris.size()) {
+                    view.findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mAdapter.remove(position);
+                        }
+                    });
+                } else {
+                    pickPicture();
+                }
             }
         });
     }
